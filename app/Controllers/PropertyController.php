@@ -1,7 +1,9 @@
 <?php
-namespace Controllers;
+namespace App\Controllers;
 
-use Models;
+use App\Models;
+use \Psr\Http\Message\ServerRequestInterface as Request;
+use \Psr\Http\Message\ResponseInterface as Response;
 
 class PropertyController extends BaseController
 {
@@ -14,29 +16,64 @@ class PropertyController extends BaseController
         }
     }
 
-    public function create() 
+    public function show($id)
     {
-        echo "create";
+        echo "show";
     }
 
-    public function update() 
+    public function create(Request $request, Response $response)
+    {
+        $data = $request->getParsedBody();
+        $fields = [
+            "country" => filter_var($data['country_code'], FILTER_SANITIZE_STRING),
+            "county" => filter_var($data['county'], FILTER_SANITIZE_STRING),
+            "description" => filter_var($data['description'], FILTER_SANITIZE_STRING),
+            "displayableAddress" => filter_var($data['displayable_address'], FILTER_SANITIZE_STRING),
+            "fullDetailsUrl" => filter_var($data['details_url'], FILTER_SANITIZE_URL),
+            //"imageUrl" => $l->image_645_430_url,
+            //"latitude" => $l->latitude,
+            //"longitude" => $l->longitude,
+            "numBathrooms" => filter_var($data['num_bathrooms'], FILTER_SANITIZE_NUMBER_INT),
+            "numBedrooms" => filter_var($data['num_bedrooms'], FILTER_SANITIZE_NUMBER_INT),
+            "price" => $l->price,
+            "propertyType" => $l->property_type,
+            "thumbnailUrl" => $l->thumbnail_url,
+            "town" => $l->post_town
+        ];
+        $exists = Models\Property::where("listing_id", "=", $l->listing_id)->first();
+        if ($exists === null){
+            $p = Models\Property::create($fields);
+            $updated ++;
+        }
+    }
+
+    public function update($request, $response, $args)
     {
         echo "update";
     }
 
-    public function delete() 
+    public function delete($request, $response, $args)
     {
         echo "delete";
     }
 
-
-    public function import($request, $response, $args) 
+    /**
+     * @param $request
+     * @param $response
+     * @param $args
+     *  todo: Extract out into command line only
+     */
+    public function import($request, $response, $args)
     {
-        $zoopla = file_get_contents('http://api.zoopla.co.uk/api/v1/property_listings.js?postcode=CF64&api_key=raqjr53tyfbdytqt8bc7r3h8');
+
+        $zoopla_url = getenv('zoopla_api_url', 'zooplapiurl');
+        $zoopla_key = getenv('zoopla_api_key', 'zooplapikey');
+        $zoopla = file_get_contents($zoopla_url.'?area=oxford&api_key='.$zoopla_key);
         $properties = json_decode($zoopla);
+        echo "<pre>Properties Found: ". count($properties->listing)."</pre>".PHP_EOL;
+        $updated = 0;
         foreach ($properties->listing as $l)
         {
-            var_dump($l->country_code);
             $fields = [
                 "country" => $l->country_code,
                 "county" => $l->county,
@@ -49,71 +86,19 @@ class PropertyController extends BaseController
                 "longitude" => $l->longitude,
                 "numBathrooms" => $l->num_bathrooms,
                 "numBedrooms" => $l->num_bedrooms,
-               // "postcode" => $l->postcode,
                 "price" => $l->price,
                 "propertyType" => $l->property_type,
                 "thumbnailUrl" => $l->thumbnail_url,
                 "town" => $l->post_town
             ];
-            $p = Models\Property::create($fields);
-            //$p->save($fields);
-//            $p->country = $l->country_code
-//                ->county = $l->county
-//                ->description = $l->description
-//                ->displayableAddress = $l->displayable_address
-//                ->fullDetailsUrl = $l->details_url
-//                ->imageUrl = $l->image_645_430_url
-//                ->latitude = $l->latitude
-//                ->listing_id = $l->listing_id
-//                ->longitude = $l->longitude
-//                ->numBathrooms = $l->num_bathrooms
-//                ->numBedrooms = $l->num_bedrooms
-//                ->postcode = $l->postcode
-//                ->price = $l->price
-//                ->propertyType = $l->property_type
-//                ->thumbnailUrl = $l->thumbnail_url
-//                ->town = $l->post_town;
-//            $p->save();
-//            ;
-
+            $exists = Models\Property::where("listing_id", "=", $l->listing_id)->first();
+            if ($exists === null){
+                $p = Models\Property::create($fields);
+                $updated ++;
+            }
 
 
         }
-            
-        // foreach ($args as $a){
-        //     echo $a.PHP_EOL;
-        // }
-        echo "done";
-    }
-
-
-     /**
-     * Pega clube pelo id
-     * $request e $response usam interface psr7
-     * $args contém os argumentos informados na rota
-     *
-     * @param Slim\Http\Request $request
-     * @param Slim\Http\Response $response
-     * @param array $args
-     * @return boolean|Slim\Http\Response
-     */
-    public function getById($request, $response, $args)
-    {
-        $id = $args['id'];
-        
-        $property = Models\Property::find($id);
-
-		if ($property) {
-			echo self::encode($clube);
-			return true;
-		}
-		
-		echo $this->error(
-			'get#property{id}',
-			$request->getUri()->getPath(),
-			$status
-		);
-		
-		return $response->withStatus($status);
+        echo "<pre>Properties Updated: ". $updated."</pre>".PHP_EOL;
     }
 }

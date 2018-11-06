@@ -1,5 +1,5 @@
 <?php
-namespace Lib;
+namespace App\Lib;
 
 use Dotenv\Dotenv;
 

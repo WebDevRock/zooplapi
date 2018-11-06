@@ -21,6 +21,7 @@ class ComposerStaticInit2b3d2f5c419f07210bdf93ab41055157
         array (
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Component\\Translation\\' => 30,
+            'Symfony\\Component\\Console\\' => 26,
             'Slim\\' => 5,
         ),
         'R' => 
@@ -49,9 +50,12 @@ class ComposerStaticInit2b3d2f5c419f07210bdf93ab41055157
         'D' => 
         array (
             'Dotenv\\' => 7,
-            'Dopesong\\Slim\\Error\\' => 20,
             'Doctrine\\Common\\Inflector\\' => 26,
             'DavidePastore\\Slim\\Validation\\' => 30,
+        ),
+        'A' => 
+        array (
+            'App\\' => 4,
         ),
     );
 
@@ -67,6 +71,10 @@ class ComposerStaticInit2b3d2f5c419f07210bdf93ab41055157
         'Symfony\\Component\\Translation\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/translation',
+        ),
+        'Symfony\\Component\\Console\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/console',
         ),
         'Slim\\' => 
         array (
@@ -120,10 +128,6 @@ class ComposerStaticInit2b3d2f5c419f07210bdf93ab41055157
         array (
             0 => __DIR__ . '/..' . '/vlucas/phpdotenv/src',
         ),
-        'Dopesong\\Slim\\Error\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/dopesong/slim-whoops/src',
-        ),
         'Doctrine\\Common\\Inflector\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/inflector/lib/Doctrine/Common/Inflector',
@@ -132,6 +136,10 @@ class ComposerStaticInit2b3d2f5c419f07210bdf93ab41055157
         array (
             0 => __DIR__ . '/..' . '/davidepastore/slim-validation/src',
         ),
+        'App\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/app',
+        ),
     );
 
     public static $fallbackDirsPsr4 = array (
@@ -139,6 +147,13 @@ class ComposerStaticInit2b3d2f5c419f07210bdf93ab41055157
     );
 
     public static $prefixesPsr0 = array (
+        'Z' => 
+        array (
+            'Zeuxisoo\\Whoops\\Provider\\Slim' => 
+            array (
+                0 => __DIR__ . '/..' . '/zeuxisoo/slim-whoops/src',
+            ),
+        ),
         'P' => 
         array (
             'Pimple' => 
@@ -148,13 +163,6 @@ class ComposerStaticInit2b3d2f5c419f07210bdf93ab41055157
         ),
     );
 
-    public static $classMap = array (
-        'Controllers\\BaseController' => __DIR__ . '/../..' . '/app/Controllers/BaseController.php',
-        'Controllers\\PropertyController' => __DIR__ . '/../..' . '/app/Controllers/PropertyController.php',
-        'Lib\\SlimDotEnv' => __DIR__ . '/../..' . '/app/Lib/SlimDotEnv.php',
-        'Models\\Property' => __DIR__ . '/../..' . '/app/Models/Property.php',
-    );
-
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
@@ -162,7 +170,6 @@ class ComposerStaticInit2b3d2f5c419f07210bdf93ab41055157
             $loader->prefixDirsPsr4 = ComposerStaticInit2b3d2f5c419f07210bdf93ab41055157::$prefixDirsPsr4;
             $loader->fallbackDirsPsr4 = ComposerStaticInit2b3d2f5c419f07210bdf93ab41055157::$fallbackDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInit2b3d2f5c419f07210bdf93ab41055157::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit2b3d2f5c419f07210bdf93ab41055157::$classMap;
 
         }, null, ClassLoader::class);
     }

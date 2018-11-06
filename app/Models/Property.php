@@ -1,5 +1,5 @@
 <?php
-namespace Models;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
 
@@ -18,6 +18,4 @@ class Property extends Eloquent
         $model->save();
         return $model;
     }
-
-    
 }

@@ -154,69 +154,18 @@
         ]
     },
     {
-        "name": "dopesong/slim-whoops",
-        "version": "2.3.0",
-        "version_normalized": "2.3.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/dopesong/Slim-Whoops.git",
-            "reference": "59d6f0a6e4368927a2f2a67e98e47f17962b3310"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/dopesong/Slim-Whoops/zipball/59d6f0a6e4368927a2f2a67e98e47f17962b3310",
-            "reference": "59d6f0a6e4368927a2f2a67e98e47f17962b3310",
-            "shasum": ""
-        },
-        "require": {
-            "filp/whoops": "^2.0",
-            "php": ">=5.6.0"
-        },
-        "require-dev": {
-            "psr/http-message": "^1.0"
-        },
-        "time": "2018-05-17T17:11:52+00:00",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Dopesong\\Slim\\Error\\": "src"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Justinas Rakasis",
-                "email": "info@probit.lt",
-                "homepage": "http://probit.lt"
-            }
-        ],
-        "description": "Slim Framework 3 error handler built on top of the Whoops error handler",
-        "homepage": "https://github.com/dopesong/Slim-Whoops",
-        "keywords": [
-            "error",
-            "framework",
-            "handler",
-            "slim",
-            "whoops"
-        ]
-    },
-    {
         "name": "filp/whoops",
-        "version": "2.3.1",
-        "version_normalized": "2.3.1.0",
+        "version": "2.2.1",
+        "version_normalized": "2.2.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/filp/whoops.git",
-            "reference": "bc0fd11bc455cc20ee4b5edabc63ebbf859324c7"
+            "reference": "e79cd403fb77fc8963a99ecc30e80ddd885b3311"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/filp/whoops/zipball/bc0fd11bc455cc20ee4b5edabc63ebbf859324c7",
-            "reference": "bc0fd11bc455cc20ee4b5edabc63ebbf859324c7",
+            "url": "https://api.github.com/repos/filp/whoops/zipball/e79cd403fb77fc8963a99ecc30e80ddd885b3311",
+            "reference": "e79cd403fb77fc8963a99ecc30e80ddd885b3311",
             "shasum": ""
         },
         "require": {
@@ -232,7 +181,7 @@
             "symfony/var-dumper": "Pretty print complex values better with var-dumper available",
             "whoops/soap": "Formats errors as SOAP responses"
         },
-        "time": "2018-10-23T09:00:00+00:00",
+        "time": "2018-06-30T13:14:06+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -980,6 +929,76 @@
         ]
     },
     {
+        "name": "symfony/console",
+        "version": "v4.1.7",
+        "version_normalized": "4.1.7.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/console.git",
+            "reference": "432122af37d8cd52fba1b294b11976e0d20df595"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/console/zipball/432122af37d8cd52fba1b294b11976e0d20df595",
+            "reference": "432122af37d8cd52fba1b294b11976e0d20df595",
+            "shasum": ""
+        },
+        "require": {
+            "php": "^7.1.3",
+            "symfony/polyfill-mbstring": "~1.0"
+        },
+        "conflict": {
+            "symfony/dependency-injection": "<3.4",
+            "symfony/process": "<3.3"
+        },
+        "require-dev": {
+            "psr/log": "~1.0",
+            "symfony/config": "~3.4|~4.0",
+            "symfony/dependency-injection": "~3.4|~4.0",
+            "symfony/event-dispatcher": "~3.4|~4.0",
+            "symfony/lock": "~3.4|~4.0",
+            "symfony/process": "~3.4|~4.0"
+        },
+        "suggest": {
+            "psr/log-implementation": "For using the console logger",
+            "symfony/event-dispatcher": "",
+            "symfony/lock": "",
+            "symfony/process": ""
+        },
+        "time": "2018-10-31T09:30:44+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "4.1-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Symfony\\Component\\Console\\": ""
+            },
+            "exclude-from-classmap": [
+                "/Tests/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "https://symfony.com/contributors"
+            }
+        ],
+        "description": "Symfony Console Component",
+        "homepage": "https://symfony.com"
+    },
+    {
         "name": "symfony/polyfill-mbstring",
         "version": "v1.10.0",
         "version_normalized": "1.10.0.0",
@@ -1161,6 +1180,59 @@
             "dotenv",
             "env",
             "environment"
+        ]
+    },
+    {
+        "name": "zeuxisoo/slim-whoops",
+        "version": "0.6.4",
+        "version_normalized": "0.6.4.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/zeuxisoo/php-slim-whoops.git",
+            "reference": "bbea008de971fa2caa356ed63a61d49ce77abf55"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/zeuxisoo/php-slim-whoops/zipball/bbea008de971fa2caa356ed63a61d49ce77abf55",
+            "reference": "bbea008de971fa2caa356ed63a61d49ce77abf55",
+            "shasum": ""
+        },
+        "require": {
+            "filp/whoops": "2.2.*",
+            "php": ">=5.5.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "4.8.*",
+            "slim/slim": "3.10.*",
+            "slim/twig-view": "2.3.*"
+        },
+        "time": "2018-06-25T03:53:27+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Zeuxisoo\\Whoops\\Provider\\Slim": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-2-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Zeuxis Lo",
+                "email": "seekstudio@gmail.com",
+                "homepage": "http://www.not.im/",
+                "role": "Developer"
+            }
+        ],
+        "description": "PHP whoops error on slim framework",
+        "homepage": "https://github.com/zeuxisoo/php-slim-whoops/",
+        "keywords": [
+            "error",
+            "exception",
+            "slim",
+            "whoops"
         ]
     }
 ]

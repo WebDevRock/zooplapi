@@ -6,8 +6,4 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Controllers\\BaseController' => $baseDir . '/app/Controllers/BaseController.php',
-    'Controllers\\PropertyController' => $baseDir . '/app/Controllers/PropertyController.php',
-    'Lib\\SlimDotEnv' => $baseDir . '/app/Lib/SlimDotEnv.php',
-    'Models\\Property' => $baseDir . '/app/Models/Property.php',
 );

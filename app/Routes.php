@@ -13,12 +13,12 @@ $app->get('/', function ($request, $response, array $args) {
 });
 
 // Properties
-$app->get("/properties", "Controllers\PropertyController:index");
-$app->get("/properties/{id}", "Controllers\PropertyController:getById");
-$app->post("/properties", "Controllers\PropertyController:create");
-$app->patch("/properties/{id}", "Controllers\PropertyController:update");
-$app->delete("/properties/{id}", "Controllers\PropertyController:delete");
+$app->get("/properties", "App\Controllers\PropertyController:index");
+$app->get("/properties/{id}", "App\Controllers\PropertyController:show");
+$app->post("/properties/create", "App\Controllers\PropertyController:create");
+$app->patch("/properties/{id}", "App\Controllers\PropertyController:update");
+$app->delete("/properties/{id}", "App\Controllers\PropertyController:delete");
 
 //Zoopla
-$app->get("/zoopla/import/{area}/{api}", "Controllers\PropertyController:import");
+$app->get("/zoopla/import", "App\Controllers\PropertyController:import");
 

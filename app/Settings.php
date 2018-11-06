@@ -1,21 +1,15 @@
 <?php
 return [
     'settings' => [
-        'displayErrorDetails' => true,
-
-        // App
-        'app' => [
-            'env' => 'dev',
-            'key' => '?0x1nh@f0lg@t0',
-        ],
+        'displayErrorDetails' => getenv('app_debug', false),
 
         // Database
         'database' => [
             'driver'    => 'mysql',
-            'host'      => 'localhost',
-            'database'  => 'zooplapi',
-            'username'  => 'root',
-            'password'  => '',
+            'host'      => getenv('db_host', 'localhost'),
+            'database'  => getenv('db_name', 'zooplapi'),
+            'username'  => getenv('db_username', 'root'),
+            'password'  => getenv('db_password', ''),
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix'    => '',
@@ -27,10 +21,5 @@ return [
                 '/public',
             ]
         ],
-
-        // Zoopla
-        'zoopla' => [
-            'api_key' => 'wxg8jtyuybwq2ydqu4xuejw5'
-        ]
     ],
 ];
