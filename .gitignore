@@ -1,4 +1,4 @@
-/vendor/
+/vendor/*
 #.gitignore
 # Numerous always-ignore extensions
 *.diff
