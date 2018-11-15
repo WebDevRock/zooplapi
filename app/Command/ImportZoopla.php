@@ -13,14 +13,14 @@ class ImportZoopla extends Command
     protected function configure()
     {
         $this
-            // the name of the command (the part after "bin/console")
+            // the name of the command (the part after "php cli.php")
             ->setName('app:import')
 
-            // the short description shown while running "php bin/console list"
+            // the short description shown while running "php cli.php list"
             ->setDescription('Import latest Zoopla dataset.')
 
             // the full command description shown when running the command with
-            // the "--help" option
+            // the "--help" option ("php cli.php app:import --help")
             ->setHelp('This command allows you import the Zoopla dataset with latest properties.')
         ;
     }
@@ -32,7 +32,7 @@ class ImportZoopla extends Command
 
         $zoopla_url = getenv('zoopla_api_url', 'zooplapiurl');
         $zoopla_key = getenv('zoopla_api_key', 'zooplapikey');
-        $zoopla_area = getenv('zoopla_area', 'Edinburgh');
+        $zoopla_area = getenv('zoopla_api_area', 'Edinburgh');
         $url = $zoopla_url . '?area='. $zoopla_area . '&api_key=' . $zoopla_key;
 
         //todo: apply handling for rate limitation and (403 error)
@@ -46,17 +46,17 @@ class ImportZoopla extends Command
                 "country" => $l->country_code,
                 "county" => $l->county,
                 "description" => $l->description,
-                "displayableAddress" => $l->displayable_address,
-                "fullDetailsUrl" => $l->details_url,
-                "imageUrl" => $l->image_645_430_url,
+                "displayable_address" => $l->displayable_address,
+                "full_details_url" => $l->details_url,
+                "image_url" => $l->image_645_430_url,
                 "latitude" => $l->latitude,
                 "listing_id" => $l->listing_id,
                 "longitude" => $l->longitude,
-                "numBathrooms" => $l->num_bathrooms,
-                "numBedrooms" => $l->num_bedrooms,
+                "bathrooms" => $l->num_bathrooms,
+                "bedrooms" => $l->num_bedrooms,
                 "price" => $l->price,
-                "propertyType" => $l->property_type,
-                "thumbnailUrl" => $l->thumbnail_url,
+                "type" => $l->property_type,
+                "thumbnail_url" => $l->thumbnail_url,
                 "town" => $l->post_town
             ];
             $exists = Models\Property::where("listing_id", "=", $l->listing_id)->first();

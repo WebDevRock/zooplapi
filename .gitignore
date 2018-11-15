@@ -1,4 +1,5 @@
 /vendor/*
+/node_modules/*
 #.gitignore
 # Numerous always-ignore extensions
 *.diff
